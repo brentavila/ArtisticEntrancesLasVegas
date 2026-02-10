@@ -1706,6 +1706,7 @@
             navBackdrop.classList.remove('active');
             document.body.style.overflow = '';
         }
+        window.closeNav = closeNav;
 
         navToggle.addEventListener('click', () => {
             if (navDrawer.classList.contains('active')) closeNav();
@@ -1713,6 +1714,10 @@
         });
         navDrawerClose.addEventListener('click', closeNav);
         navBackdrop.addEventListener('click', closeNav);
+
+        navDrawer.addEventListener('click', function(e) {
+            if (e.target.closest('a')) closeNav();
+        });
 
         // Countdown to Feb 28, 2026 23:59:59
         const endDate = new Date('2026-02-28T23:59:59').getTime();

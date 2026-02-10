@@ -1741,6 +1741,7 @@
             navBackdrop.classList.remove('active');
             document.body.style.overflow = '';
         }
+        window.closeNav = closeNav;
 
         navToggle.addEventListener('click', () => {
             if (navDrawer.classList.contains('active')) closeNav();
@@ -1748,6 +1749,11 @@
         });
         navDrawerClose.addEventListener('click', closeNav);
         navBackdrop.addEventListener('click', closeNav);
+
+        // Close drawer when any link or CTA is clicked (ensures menu closes and navigation works)
+        navDrawer.addEventListener('click', function(e) {
+            if (e.target.closest('a')) closeNav();
+        });
 
         // Scroll fade-in animations
         const observerOptions = {
