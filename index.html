@@ -1750,9 +1750,24 @@
         navDrawerClose.addEventListener('click', closeNav);
         navBackdrop.addEventListener('click', closeNav);
 
-        // Close drawer when any link or CTA is clicked (ensures menu closes and navigation works)
+        // Close drawer after a short delay when a link is clicked so navigation can complete first
         navDrawer.addEventListener('click', function(e) {
-            if (e.target.closest('a')) closeNav();
+            var link = e.target.closest('a');
+            if (link && link.getAttribute('href')) {
+                e.preventDefault();
+                var href = link.getAttribute('href');
+                closeNav();
+                setTimeout(function() {
+                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
+                        window.location.href = href;
+                    } else if (href.startsWith('#') && href.length > 1) {
+                        var el = document.getElementById(href.slice(1));
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        window.location.href = href;
+                    }
+                }, 150);
+            }
         });
 
         // Scroll fade-in animations

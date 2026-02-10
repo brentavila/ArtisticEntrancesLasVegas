@@ -1716,7 +1716,22 @@
         navBackdrop.addEventListener('click', closeNav);
 
         navDrawer.addEventListener('click', function(e) {
-            if (e.target.closest('a')) closeNav();
+            var link = e.target.closest('a');
+            if (link && link.getAttribute('href')) {
+                e.preventDefault();
+                var href = link.getAttribute('href');
+                closeNav();
+                setTimeout(function() {
+                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
+                        window.location.href = href;
+                    } else if (href.startsWith('#') && href.length > 1) {
+                        var el = document.getElementById(href.slice(1));
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else {
+                        window.location.href = href;
+                    }
+                }, 150);
+            }
         });
 
         // Countdown to Feb 28, 2026 23:59:59
