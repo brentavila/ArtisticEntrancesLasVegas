@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Artistic Entrances LLC</title>
+    <meta name="description" content="Privacy Policy for Artistic Entrances LLC. How we collect, use, and protect your personal information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E2C97E;
+            --black: #0A0A0A;
+            --dark: #141414;
+            --dark-card: #1A1A1A;
+            --gray: #888888;
+            --gray-light: #AAAAAA;
+            --white: #F5F0E8;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Raleway', 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 3rem;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            position: relative;
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: var(--dark);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: linear-gradient(to right, rgba(201, 168, 76, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(201, 168, 76, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+            -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+        }
+        .page-hero h1,
+        .page-hero .effective { position: relative; z-index: 1; }
+
+        .page-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-hero .effective {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ===== CONTENT ===== */
+        .policy-content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .policy-content p {
+            color: var(--gray-light);
+            font-weight: 300;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .policy-content .intro {
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .policy-content .agreement {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .policy-section h2 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .policy-section ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .policy-section ul li {
+            color: var(--gray-light);
+            font-weight: 300;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .policy-section ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .policy-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-content .contact-note {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .policy-content .contact-note p {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-content a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .policy-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--black);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .footer-logo span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-right: 1.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            nav.scrolled {
+                padding: 0.75rem 1.5rem;
+            }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+            .page-hero {
+                padding: 8rem 1.5rem 3rem;
+            }
+            .policy-content {
+                padding: 3rem 1.5rem 4rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">Artistic <span>Entrances</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="wrought-iron-promo.html">Promotion</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <header class="page-hero">
+        <h1>Privacy Policy</h1>
+        <p class="effective">Effective date: January 16, 2026</p>
+    </header>
+
+    <main class="policy-content">
+        <p class="intro">Welcome to Artistic Entrances LLC. Your privacy is very important to us, and we are committed to protecting the personal information you share with us when using our services.</p>
+        <p class="agreement">By accessing or using the Website, you agree to the terms outlined in this policy.</p>
+
+        <section class="policy-section">
+            <h2>1. Information We Collect</h2>
+            <p>We collect the following types of information when you interact with our Website:</p>
+            <ul>
+                <li><strong>Information You Provide:</strong> When you fill out forms, sign up for newsletters, or make inquiries, we may collect personal details such as your name, email address, phone number, and other contact information.</li>
+                <li><strong>Website Usage Data:</strong> We collect non-personal data through automated tools such as Google Analytics. This includes your IP address, browser type, device information, and browsing activity. This information is anonymous and used to enhance your experience.</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>2. How We Use Your Information</h2>
+            <p>We use your information for the following purposes:</p>
+            <ul>
+                <li><strong>To Process Transactions:</strong> To fulfill the services or products you request. We do not share, sell, or trade your information without your consent.</li>
+                <li><strong>To Send Communication:</strong> To respond to inquiries, provide requested information, and send updates related to your interests.</li>
+                <li><strong>To Send Marketing Communications:</strong> We may use your phone number for sending marketing text messages regarding updates or offers. You can opt out at any time by texting "STOP."</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>3. Project Photos and Portfolio Media</h2>
+            <p>As a custom craftsmanship business, we often document our work for quality control and marketing.</p>
+            <ul>
+                <li><strong>Media Collection:</strong> We may take photographs or videos of completed installations at your property ("Project Media").</li>
+                <li><strong>Marketing Use:</strong> We may use Project Media on our website, social media, and marketing materials to showcase our work.</li>
+                <li><strong>Privacy Protection:</strong> We will never display your full name, specific street address, or recognizable photos of residents in marketing materials without your explicit written consent.</li>
+                <li><strong>Opt-Out:</strong> If you prefer that images of your project remain private, please notify us in writing at the time of your order or via email.</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>4. How We Protect Your Information</h2>
+            <p>We implement industry-standard security measures to protect your personal information during collection and transmission. While no system is entirely secure, we strive to ensure your data remains protected.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>5. Information Disclosure to Third Parties</h2>
+            <p>We do not sell, trade, or transfer your personal information to third parties. We may share information with trusted service providers who assist us in operating our website and delivering services; these parties are obligated to keep your information confidential.</p>
+            <p>We may also disclose information when required by law or to protect our rights, property, or safety.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>6. Compliance and Regulations</h2>
+            <ul>
+                <li><strong>A2P Compliance:</strong> We comply with the Telephone Consumer Protection Act (TCPA). By providing your phone number, you agree to receive communications via automated methods. Opt out anytime by texting "STOP."</li>
+                <li><strong>COPPA Compliance:</strong> In compliance with the Children's Online Privacy Protection Act, we do not collect information from anyone under 13 years of age.</li>
+                <li><strong>Remarketing:</strong> We may use third-party vendors (like Google and Meta) to show ads to previous visitors. This does not involve the collection of personally identifiable information.</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>7. Third-Party Links</h2>
+            <p>Our Website may contain links to third-party sites. We are not responsible for their content or privacy practices. Please review their policies before interacting with them.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>8. Personal, Financial, and Property Information</h2>
+            <p>Any contact or property details submitted are used solely for your specific request and are not shared with third parties unless necessary to provide our services to you.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>9. Changes to Our Privacy Policy</h2>
+            <p>This policy applies only to information collected through our Website. We may update this policy periodically; any changes will be posted on this page with an updated "Effective Date."</p>
+        </section>
+
+        <section class="policy-section contact-note">
+            <h2>Contacting Us</h2>
+            <p>If you have any questions or concerns about this Privacy Policy, please contact us using the information provided on our <a href="index.html#contact">Contact</a> page.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo">Artistic <span>Entrances</span></a>
+            <div class="footer-links">
+                <a href="index.html#contact">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <div class="footer-text">&copy; 2026 Artistic Entrances. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    </script>
+
+</body>
+</html>

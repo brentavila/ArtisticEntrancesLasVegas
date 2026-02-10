@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="images/hero-image-wide-shot.jpg" as="image">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -29,6 +30,8 @@
             --white-pure: #FFFFFF;
             --font-heading: 'Playfair Display', Georgia, serif;
             --font-body: 'Raleway', 'Segoe UI', sans-serif;
+            --pattern-fill: rgba(201, 168, 76, 0.06);
+            --pattern-size: 32px;
         }
 
         html {
@@ -41,6 +44,74 @@
             color: var(--white);
             line-height: 1.7;
             overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND PATTERNS (door / wrought iron inspired) ===== */
+        .bg-pattern-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-pattern-wrap + *,
+        section .container { position: relative; z-index: 1; }
+        .bg-pattern-grid {
+            background-image:
+                linear-gradient(to right, var(--pattern-fill) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--pattern-fill) 1px, transparent 1px);
+            background-size: var(--pattern-size) var(--pattern-size);
+        }
+        .bg-pattern-dots {
+            background-image: radial-gradient(var(--pattern-fill) 1.5px, transparent 1.5px);
+            background-size: var(--pattern-size) var(--pattern-size);
+        }
+        .bg-pattern-vertical-lines {
+            background-image: linear-gradient(to right, var(--pattern-fill) 1px, transparent 1px);
+            background-size: var(--pattern-size) 100%;
+        }
+        .bg-pattern-horizontal-lines {
+            background-image: linear-gradient(to bottom, var(--pattern-fill) 1px, transparent 1px);
+            background-size: 100% var(--pattern-size);
+        }
+        .bg-pattern-diagonal-stripes {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent calc(var(--pattern-size) / 2 - 1px),
+                var(--pattern-fill) calc(var(--pattern-size) / 2 - 1px),
+                var(--pattern-fill) calc(var(--pattern-size) / 2 + 1px)
+            );
+            background-size: var(--pattern-size) var(--pattern-size);
+        }
+        .bg-pattern-checkerboard {
+            background-image:
+                linear-gradient(45deg, var(--pattern-fill) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--pattern-fill) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--pattern-fill) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--pattern-fill) 75%);
+            background-size: calc(var(--pattern-size) * 2) calc(var(--pattern-size) * 2);
+            background-position: 0 0, 0 var(--pattern-size), var(--pattern-size) calc(-1 * var(--pattern-size)), calc(-1 * var(--pattern-size)) 0;
+        }
+        .bg-pattern-mask-edges {
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+        }
+        .bg-pattern-mask-center {
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, transparent, black);
+            -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, transparent, black);
+        }
+        .bg-pattern-mask-top {
+            mask-image: linear-gradient(to bottom, transparent, black 20%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%);
+        }
+        .bg-pattern-mask-bottom {
+            mask-image: linear-gradient(to top, transparent, black 25%);
+            -webkit-mask-image: linear-gradient(to top, transparent, black 25%);
+        }
+        .bg-pattern-mask-y {
+            mask-image: linear-gradient(to bottom, transparent 5%, black 15%, black 85%, transparent 95%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 15%, black 85%, transparent 95%);
         }
 
         /* ===== NAVIGATION ===== */
@@ -130,6 +201,21 @@
             background: var(--gold);
             transition: all 0.3s ease;
         }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            background: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover { background: var(--gold-light); color: var(--black); }
+        .nav-cta-mobile { display: none; }
 
         /* ===== HERO ===== */
         .hero {
@@ -147,15 +233,25 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, #1a1207 0%, #0a0a0a 40%, #0d0d0d 60%, #12100a 100%);
+            background-image: url('images/hero-image-wide-shot.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         .hero-bg::before {
             content: '';
             position: absolute;
             inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 40%, rgba(10, 10, 10, 0.75) 100%);
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
         }
 
         .hero-pattern {
@@ -322,6 +418,7 @@
         /* ===== SECTIONS COMMON ===== */
         section {
             padding: 7rem 2rem;
+            position: relative;
         }
 
         .container {
@@ -489,11 +586,30 @@
             justify-content: center;
         }
 
+        .gallery-item img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
         .gallery-placeholder {
             font-size: 3rem;
             opacity: 0.12;
             color: var(--gold);
             transition: all 0.4s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .gallery-item.has-img .gallery-placeholder {
+            display: none;
         }
 
         .gallery-overlay {
@@ -505,6 +621,7 @@
             padding: 1.5rem;
             opacity: 0;
             transition: opacity 0.4s ease;
+            z-index: 2;
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -880,6 +997,20 @@
         .footer-links a:hover {
             color: var(--gold);
         }
+        .footer-contact {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0 1.5rem;
+            font-size: 0.8rem;
+        }
+        .footer-contact .footer-link {
+            color: var(--gray);
+            text-decoration: none;
+        }
+        .footer-contact .footer-link:hover { color: var(--gold); }
+        .footer-address { color: var(--gray); }
+        .footer-cta { color: var(--gold) !important; font-weight: 500; }
 
         .footer-text {
             font-size: 0.8rem;
@@ -942,6 +1073,8 @@
                 display: flex;
                 z-index: 1001;
             }
+            .nav-cta-mobile { display: inline-flex; }
+            .nav-links .nav-cta { display: none; }
             .form-row {
                 grid-template-columns: 1fr;
             }
@@ -983,7 +1116,9 @@
             <li><a href="index.html#gallery">Gallery</a></li>
             <li><a href="#form">Claim Offer</a></li>
             <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="tel:+17253021391" class="nav-cta">Call (725) 302-1391</a></li>
         </ul>
+        <a href="tel:+17253021391" class="nav-cta nav-cta-mobile" aria-label="Call (725) 302-1391">Call</a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span>
             <span></span>
@@ -1004,6 +1139,7 @@
             <p>Elevate your home's first impression with handcrafted wrought iron doors—and receive a $500 Amazon Gift Card with your purchase. Secure, beautiful, built to last.</p>
             <div class="hero-buttons">
                 <a href="#form" class="btn btn-primary">Claim Your $500 Gift Card</a>
+                <a href="tel:+17253021391" class="btn btn-outline">Call (725) 302-1391</a>
                 <a href="#promo-details" class="btn btn-outline">See How It Works</a>
             </div>
         </div>
@@ -1017,6 +1153,7 @@
 
     <!-- Promotion Details -->
     <section class="promo-details" id="promo-details">
+        <div class="bg-pattern-wrap bg-pattern-vertical-lines bg-pattern-mask-edges" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">The Offer</div>
@@ -1085,6 +1222,7 @@
 
     <!-- Product Gallery -->
     <section class="product-gallery" id="gallery">
+        <div class="bg-pattern-wrap bg-pattern-grid bg-pattern-mask-center" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">Styles</div>
@@ -1093,27 +1231,33 @@
                 <p>From traditional scrollwork to sleek contemporary designs—crafted for your home.</p>
             </div>
             <div class="gallery-grid fade-in">
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/project-iron-5002.jpg" alt="Traditional Scrollwork wrought iron door" width="400" height="500" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Traditional Scrollwork</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/project-iron-5003..jpg" alt="Modern Minimal wrought iron door" width="400" height="500" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Modern Minimal</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/project-iron-5004.jpg" alt="Mediterranean wrought iron door" width="400" height="500" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Mediterranean</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/531410932_122151487070605859_1645905058076598412_n-iron.jpg" alt="Contemporary wrought iron door" width="400" height="500" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Contemporary</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/project-iron-5006.jpg" alt="Estate Entry wrought iron door" width="400" height="500" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Estate Entry</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/531852485_122151487382605859_7100723965076621823_n-iron.jpg" alt="Custom Design wrought iron door" width="400" height="500" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Custom Design</span></div>
                 </div>
@@ -1126,6 +1270,7 @@
 
     <!-- Trust Section -->
     <section class="trust" id="trust">
+        <div class="bg-pattern-wrap bg-pattern-diagonal-stripes bg-pattern-mask-edges" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">Why Artistic Entrances</div>
@@ -1156,11 +1301,11 @@
             </div>
             <div class="trust-stats fade-in">
                 <div class="trust-stat">
-                    <span class="trust-stat-num">500+</span>
+                    <span class="trust-stat-num">50+</span>
                     <span class="trust-stat-label">Doors Installed</span>
                 </div>
                 <div class="trust-stat">
-                    <span class="trust-stat-num">15+</span>
+                    <span class="trust-stat-num">5+</span>
                     <span class="trust-stat-label">Years in Business</span>
                 </div>
                 <div class="trust-stat">
@@ -1173,18 +1318,21 @@
 
     <!-- Urgency -->
     <section class="urgency">
+        <div class="bg-pattern-wrap bg-pattern-horizontal-lines bg-pattern-mask-y" aria-hidden="true"></div>
         <div class="container">
             <div class="urgency-inner fade-in">
                 <h2>Don't Miss Out</h2>
                 <p class="urgency-deadline">Offer ends February 28, 2026</p>
                 <p>This $500 Amazon Gift Card promotion is for a limited time. Secure your custom wrought iron door and claim your gift card before the deadline.</p>
                 <a href="#form" class="btn btn-primary">Claim Your $500 Gift Card</a>
+                <a href="tel:+17253021391" class="btn btn-outline">Call (725) 302-1391</a>
             </div>
         </div>
     </section>
 
     <!-- Lead Form -->
     <section class="lead-form-section" id="form">
+        <div class="bg-pattern-wrap bg-pattern-dots bg-pattern-mask-center" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">Get Started</div>
@@ -1246,12 +1394,28 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="budget">Estimated Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range (optional)</option>
+                                <option value="under-5">Under $5,000</option>
+                                <option value="5-10">$5,000 – $10,000</option>
+                                <option value="10-15">$10,000 – $15,000</option>
+                                <option value="15-25">$15,000 – $25,000</option>
+                                <option value="25-plus">$25,000+</option>
+                                <option value="undecided">Not sure yet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="message">Tell Us About Your Project</label>
                             <textarea id="message" name="message" rows="3" placeholder="Door location, size, or special requests..."></textarea>
                         </div>
                         <div class="form-group form-optin">
-                            <input type="checkbox" id="optin" name="optin" value="yes">
-                            <label for="optin">Yes, send me design inspiration and exclusive offers.</label>
+                            <input type="checkbox" id="smsConsent1" name="sms_consent_services" value="yes">
+                            <label for="smsConsent1">I agree to receive SMS messages from Artistic Entrances LLC regarding services, updates, and appointments. Message and data rates may apply. Reply STOP to unsubscribe. <em>(Optional)</em></label>
+                        </div>
+                        <div class="form-group form-optin">
+                            <input type="checkbox" id="smsConsent2" name="sms_consent_business" value="yes">
+                            <label for="smsConsent2">By providing my phone number, I consent to receive text messages from Artistic Entrances LLC for business communications and service notifications. Msg &amp; data rates may apply. Reply STOP to opt out. <em>(Optional)</em></label>
                         </div>
                         <p class="form-privacy">By submitting, you agree to be contacted about your inquiry. We respect your privacy and will not share your information.</p>
                         <button type="submit" class="btn btn-primary" id="submitBtn">Get My $500 Gift Card</button>
@@ -1267,6 +1431,7 @@
 
     <!-- FAQ -->
     <section class="faq-section" id="faq">
+        <div class="bg-pattern-wrap bg-pattern-checkerboard bg-pattern-mask-edges" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">FAQ</div>
@@ -1336,10 +1501,18 @@
     <footer>
         <div class="footer-content">
             <a href="index.html" class="footer-logo">Artistic <span>Entrances</span></a>
+            <div class="footer-contact">
+                <a href="tel:+17253021391" class="footer-link">(725) 302-1391</a>
+                <a href="mailto:sales@artisticentrances.co" class="footer-link">sales@artisticentrances.co</a>
+                <span class="footer-address">71 N Pecos Rd, Ste 103, Las Vegas, NV 89101</span>
+            </div>
             <div class="footer-links">
                 <a href="index.html#contact">Contact</a>
                 <a href="index.html#gallery">Gallery</a>
                 <a href="#faq">FAQ</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="tel:+17253021391" class="footer-cta">Call Now</a>
             </div>
             <div class="footer-text">&copy; 2026 Artistic Entrances. All rights reserved.</div>
         </div>
@@ -1415,24 +1588,20 @@
             });
         });
 
-        // Form submit (placeholder - integrate with GoHighLevel webhook / GTM as needed)
+        // Form submit - redirect to thank-you page (integrate POST to GoHighLevel webhook / GTM as needed)
         function handlePromoSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('promoForm');
             const btn = document.getElementById('submitBtn');
-            const formFields = document.getElementById('formFields');
-            const formSuccess = document.getElementById('formSuccess');
 
-            // Simulate submit - replace with actual POST to your endpoint
             btn.textContent = 'Sending...';
             btn.disabled = true;
 
+            // In production: POST form data to your endpoint here, then redirect
+            // window.location.href = 'thank-you.html';
             setTimeout(() => {
-                formFields.classList.add('visible');
-                formSuccess.classList.add('visible');
-                btn.style.display = 'none';
-                // In production: POST to GoHighLevel, fire GTM conversion, etc.
-            }, 800);
+                window.location.href = 'thank-you.html';
+            }, 600);
         }
     </script>
 

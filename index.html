@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" href="images/hero-image-wide-shot.jpg" as="image">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -29,6 +30,9 @@
             --white-pure: #FFFFFF;
             --font-heading: 'Playfair Display', Georgia, serif;
             --font-body: 'Raleway', 'Segoe UI', sans-serif;
+            /* Door-inspired background pattern (subtle gold) */
+            --pattern-fill: rgba(201, 168, 76, 0.06);
+            --pattern-size: 32px;
         }
 
         html {
@@ -131,6 +135,28 @@
             transition: all 0.3s ease;
         }
 
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--black);
+            background: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover {
+            background: var(--gold-light);
+            color: var(--black);
+        }
+        .nav-cta-mobile {
+            display: none;
+        }
+
         /* ===== HERO ===== */
         .hero {
             position: relative;
@@ -147,15 +173,25 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, #1a1207 0%, #0a0a0a 40%, #0d0d0d 60%, #12100a 100%);
+            background-image: url('images/hero-image-wide-shot.jpg');
+            background-size: cover;
+            background-position: center;
         }
 
         .hero-bg::before {
             content: '';
             position: absolute;
             inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.4) 40%, rgba(10, 10, 10, 0.75) 100%);
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
         }
 
         .hero-pattern {
@@ -300,9 +336,94 @@
             50% { opacity: 0.5; transform: scaleY(0.7); }
         }
 
+        /* ===== BACKGROUND PATTERNS (door-inspired) ===== */
+        .bg-pattern-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-pattern-wrap + *,
+        section .container { position: relative; z-index: 1; }
+
+        /* Pattern types */
+        .bg-pattern-grid {
+            background-image:
+                linear-gradient(to right, var(--pattern-fill) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--pattern-fill) 1px, transparent 1px);
+            background-size: var(--pattern-size) var(--pattern-size);
+        }
+        .bg-pattern-dots {
+            background-image: radial-gradient(var(--pattern-fill) 1.5px, transparent 1.5px);
+            background-size: var(--pattern-size) var(--pattern-size);
+        }
+        .bg-pattern-vertical-lines {
+            background-image: linear-gradient(to right, var(--pattern-fill) 1px, transparent 1px);
+            background-size: var(--pattern-size) 100%;
+        }
+        .bg-pattern-horizontal-lines {
+            background-image: linear-gradient(to bottom, var(--pattern-fill) 1px, transparent 1px);
+            background-size: 100% var(--pattern-size);
+        }
+        .bg-pattern-diagonal-stripes {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent calc(var(--pattern-size) / 2 - 1px),
+                var(--pattern-fill) calc(var(--pattern-size) / 2 - 1px),
+                var(--pattern-fill) calc(var(--pattern-size) / 2 + 1px)
+            );
+            background-size: var(--pattern-size) var(--pattern-size);
+        }
+        .bg-pattern-checkerboard {
+            background-image:
+                linear-gradient(45deg, var(--pattern-fill) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--pattern-fill) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, var(--pattern-fill) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--pattern-fill) 75%);
+            background-size: calc(var(--pattern-size) * 2) calc(var(--pattern-size) * 2);
+            background-position: 0 0, 0 var(--pattern-size), var(--pattern-size) calc(-1 * var(--pattern-size)), calc(-1 * var(--pattern-size)) 0;
+        }
+        /* Door-panels: wider vertical bands (like raised panels) */
+        .bg-pattern-panels {
+            background-image: linear-gradient(to right,
+                transparent 0%,
+                var(--pattern-fill) 1px,
+                transparent 2px,
+                transparent calc(100% / 6 - 2px),
+                var(--pattern-fill) calc(100% / 6 - 1px),
+                transparent calc(100% / 6)
+            );
+            background-size: 100% 100%;
+        }
+
+        /* Masks so patterns fade and don't overwhelm */
+        .bg-pattern-mask-edges {
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+        }
+        .bg-pattern-mask-center {
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, transparent, black);
+            -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, transparent, black);
+        }
+        .bg-pattern-mask-top {
+            mask-image: linear-gradient(to bottom, transparent, black 20%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%);
+        }
+        .bg-pattern-mask-bottom {
+            mask-image: linear-gradient(to top, transparent, black 25%);
+            -webkit-mask-image: linear-gradient(to top, transparent, black 25%);
+        }
+        .bg-pattern-mask-y {
+            mask-image: linear-gradient(to bottom, transparent 5%, black 15%, black 85%, transparent 95%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 15%, black 85%, transparent 95%);
+        }
+
         /* ===== SECTIONS COMMON ===== */
         section {
             padding: 7rem 2rem;
+            position: relative;
         }
 
         .container {
@@ -340,6 +461,17 @@
             font-weight: 300;
         }
 
+        .testimonials-google {
+            margin-top: 0.5rem;
+        }
+        .testimonials-google a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .testimonials-google a:hover {
+            text-decoration: underline;
+        }
+
         .divider {
             width: 60px;
             height: 1px;
@@ -370,10 +502,24 @@
             justify-content: center;
         }
 
+        .about-image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .about-image-icon {
             font-size: 6rem;
             opacity: 0.15;
             color: var(--gold);
+            position: relative;
+            z-index: 0;
+        }
+
+        .about-image.has-img .about-image-icon {
+            display: none;
         }
 
         .about-image::after {
@@ -529,6 +675,19 @@
             justify-content: center;
         }
 
+        .gallery-item img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
         .gallery-item:nth-child(1) {
             grid-column: span 2;
             grid-row: span 2;
@@ -539,6 +698,12 @@
             opacity: 0.12;
             color: var(--gold);
             transition: all 0.4s ease;
+            position: relative;
+            z-index: 0;
+        }
+
+        .gallery-item.has-img .gallery-placeholder {
+            display: none;
         }
 
         .gallery-item:nth-child(1) .gallery-placeholder {
@@ -554,6 +719,7 @@
             padding: 1.5rem;
             opacity: 0;
             transition: opacity 0.4s ease;
+            z-index: 2;
         }
 
         .gallery-item:hover .gallery-overlay {
@@ -719,6 +885,17 @@
             margin-bottom: 0.25rem;
         }
 
+        .contact-item-text.contact-link {
+            color: var(--gray-light);
+            text-decoration: none;
+        }
+        .contact-item-text.contact-link:hover {
+            color: var(--gold);
+        }
+        .contact-cta {
+            margin-top: 0.5rem;
+        }
+
         .contact-form {
             display: flex;
             flex-direction: column;
@@ -773,6 +950,28 @@
             background: var(--dark);
         }
 
+        .form-group.form-optin {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .form-group.form-optin input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .form-group.form-optin label {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            font-weight: 300;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
         .contact-form .btn-primary {
             align-self: flex-start;
             width: 100%;
@@ -802,6 +1001,39 @@
         .footer-logo span {
             color: var(--white);
             font-weight: 300;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-right: 1.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0 1.5rem;
+            font-size: 0.8rem;
+        }
+        .footer-contact .footer-link {
+            color: var(--gray);
+            text-decoration: none;
+        }
+        .footer-contact .footer-link:hover {
+            color: var(--gold);
+        }
+        .footer-address {
+            color: var(--gray);
+        }
+        .footer-cta {
+            color: var(--gold) !important;
+            font-weight: 500;
         }
 
         .footer-text {
@@ -870,6 +1102,12 @@
                 display: flex;
                 z-index: 1001;
             }
+            .nav-cta-mobile {
+                display: inline-flex;
+            }
+            .nav-links .nav-cta {
+                display: none;
+            }
 
             .about-grid {
                 grid-template-columns: 1fr;
@@ -930,7 +1168,9 @@
             <li><a href="wrought-iron-promo.html" onclick="closeNav()">Promotion</a></li>
             <li><a href="#testimonials" onclick="closeNav()">Testimonials</a></li>
             <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+            <li><a href="tel:+17253021391" class="nav-cta" onclick="closeNav()">Call (725) 302-1391</a></li>
         </ul>
+        <a href="tel:+17253021391" class="nav-cta nav-cta-mobile" aria-label="Call (725) 302-1391">Call</a>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span>
             <span></span>
@@ -948,7 +1188,8 @@
             <h1>Where Craftsmanship Meets <em>Artistry</em></h1>
             <p>Every entrance tells a story. We design and handcraft bespoke doors that transform your threshold into a statement of elegance and individuality.</p>
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Request a Consultation</a>
+                <a href="tel:+17253021391" class="btn btn-primary">Call (725) 302-1391</a>
+                <a href="#contact" class="btn btn-outline">Request a Consultation</a>
                 <a href="#gallery" class="btn btn-outline">View Our Work</a>
             </div>
         </div>
@@ -962,9 +1203,11 @@
 
     <!-- About -->
     <section class="about" id="about">
+        <div class="bg-pattern-wrap bg-pattern-vertical-lines bg-pattern-mask-edges" aria-hidden="true"></div>
         <div class="container">
             <div class="about-grid">
-                <div class="about-image fade-in">
+                <div class="about-image fade-in has-img">
+                    <img src="images/482535551_17888107833211501_5423696947774469072_n.jpg" alt="Handcrafted custom door by Artistic Entrances" width="600" height="750" loading="lazy">
                     <div class="about-image-icon">&#9670;</div>
                 </div>
                 <div class="about-content fade-in">
@@ -993,6 +1236,7 @@
 
     <!-- Services -->
     <section class="services" id="services">
+        <div class="bg-pattern-wrap bg-pattern-grid bg-pattern-mask-center" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">What We Do</div>
@@ -1037,6 +1281,7 @@
 
     <!-- Gallery -->
     <section class="gallery" id="gallery">
+        <div class="bg-pattern-wrap bg-pattern-dots bg-pattern-mask-y" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">Portfolio</div>
@@ -1045,23 +1290,28 @@
                 <p>A curated selection of entrances we've had the privilege of creating.</p>
             </div>
             <div class="gallery-grid fade-in">
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/467769921_122110154246605859_3748534347878929710_n.jpg" alt="Grand Estate Entry" width="600" height="560" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Grand Estate Entry</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/468570812_122111813090605859_2821299071737242802_n.jpg" alt="Modern Walnut Door" width="280" height="280" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Modern Walnut Door</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/468844092_122111813396605859_495123746705108790_n.jpg" alt="Carved Oak Panel" width="280" height="280" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Carved Oak Panel</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/468931221_122111813150605859_2681902268025282085_n.jpg" alt="Art Deco Entrance" width="280" height="280" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Art Deco Entrance</span></div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item has-img">
+                    <img src="images/469710733_122113298612605859_6895681920665700925_n.jpg" alt="Rustic Farmhouse" width="280" height="280" loading="lazy">
                     <span class="gallery-placeholder">&#9670;</span>
                     <div class="gallery-overlay"><span>Rustic Farmhouse</span></div>
                 </div>
@@ -1071,54 +1321,56 @@
 
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
+        <div class="bg-pattern-wrap bg-pattern-diagonal-stripes bg-pattern-mask-edges" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">Testimonials</div>
                 <h2>What Our Clients Say</h2>
                 <div class="divider"></div>
-            </div>
+                <p class="testimonials-google"><a href="https://share.google/qJUsKgvvNJD4FxSCQ" target="_blank" rel="noopener noreferrer">Google Reviews</a> &mdash; 5 stars from our customers</p>
+            </div><a href="https://www.google.com/maps/place/Artistic+Entrances+LLC" target="_blank" rel="noopener noreferrer">Google Reviews</a> &mdash; 5 stars from our customers</p>
             <div class="testimonials-grid">
                 <div class="testimonial-card fade-in">
                     <span class="testimonial-quote">&ldquo;</span>
-                    <p>Artistic Entrances transformed our home's facade. The custom mahogany door they crafted is a true masterpiece &mdash; every guest comments on it. Their attention to detail is unmatched.</p>
+                    <p>Excellent customer service. In person and ready to make a deal! I own and operate a realty brokerage here in the Vegas valley. Selling greater Las Vegas since 1997. I have not seen quality like this door at a great price ever! This custom castle door is for my drum studio at my mountain escape home. This door is solid Brazilian wood. Heavy duty heavy weight. Thank you and buying another for back door.</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">JM</div>
+                        <div class="testimonial-avatar">JA</div>
                         <div>
-                            <div class="testimonial-name">James Mitchell</div>
-                            <div class="testimonial-title">Homeowner, Greenwich</div>
+                            <div class="testimonial-name">Jonathan Abbinante</div>
+                            <div class="testimonial-title">Local Guide &bull; Realty Brokerage Owner, Las Vegas</div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <span class="testimonial-quote">&ldquo;</span>
-                    <p>We commissioned doors for our entire boutique hotel. The craftsmanship exceeded every expectation. They understood our vision perfectly and delivered beyond what we imagined.</p>
+                    <p>Artistic Entrances exceeded my expectations! Their team is highly professional, providing top-notch service from start to finish. The quality of their windows and doors is outstanding, and the installation process was seamless. They paid great attention to detail and ensured everything was done perfectly. I highly recommend Artistic Entrances to anyone looking for high-quality doors and windows with excellent service!</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">SR</div>
+                        <div class="testimonial-avatar">BG</div>
                         <div>
-                            <div class="testimonial-name">Sarah Reynolds</div>
-                            <div class="testimonial-title">Interior Designer</div>
+                            <div class="testimonial-name">Bianca Garcia</div>
+                            <div class="testimonial-title">Local Guide</div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <span class="testimonial-quote">&ldquo;</span>
-                    <p>The restoration of our 1920s oak doors was handled with incredible care and expertise. They look absolutely stunning &mdash; better than they ever did. True artisans.</p>
+                    <p>Just really want to thanks to this team on providing and installing my new double front entry door and a patio door. They are so professional and best service ever seen. Material they use is awesome. I hardly recommend them. Very competitive cost. Thanks again &mdash; specially to Mr. Espinoza.</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">DP</div>
+                        <div class="testimonial-avatar">MR</div>
                         <div>
-                            <div class="testimonial-name">David Park</div>
-                            <div class="testimonial-title">Heritage Property Owner</div>
+                            <div class="testimonial-name">Mauricio Reyes</div>
+                            <div class="testimonial-title">Google Review</div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card fade-in">
                     <span class="testimonial-quote">&ldquo;</span>
-                    <p>From the initial consultation to the final installation, the process was seamless and professional. Our carved double doors are the highlight of our renovation.</p>
+                    <p>They did a good job for me at my house.</p>
                     <div class="testimonial-author">
-                        <div class="testimonial-avatar">EW</div>
+                        <div class="testimonial-avatar">RG</div>
                         <div>
-                            <div class="testimonial-name">Elena Wright</div>
-                            <div class="testimonial-title">Architect</div>
+                            <div class="testimonial-name">Ricardo García</div>
+                            <div class="testimonial-title">Google Review</div>
                         </div>
                     </div>
                 </div>
@@ -1128,6 +1380,7 @@
 
     <!-- Contact -->
     <section class="contact" id="contact">
+        <div class="bg-pattern-wrap bg-pattern-horizontal-lines bg-pattern-mask-bottom" aria-hidden="true"></div>
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-label">Get in Touch</div>
@@ -1144,24 +1397,25 @@
                             <div class="contact-icon">&#9742;</div>
                             <div>
                                 <div class="contact-item-label">Phone</div>
-                                <div class="contact-item-text">(555) 123-4567</div>
+                                <a href="tel:+17253021391" class="contact-item-text contact-link">(725) 302-1391</a>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">&#9993;</div>
                             <div>
                                 <div class="contact-item-label">Email</div>
-                                <div class="contact-item-text">hello@artisticentrances.com</div>
+                                <a href="mailto:sales@artisticentrances.co" class="contact-item-text contact-link">sales@artisticentrances.co</a>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">&#9873;</div>
                             <div>
-                                <div class="contact-item-label">Showroom</div>
-                                <div class="contact-item-text">123 Craftsman Way, Suite 100</div>
+                                <div class="contact-item-label">Address</div>
+                                <a href="https://www.google.com/maps/search/?api=1&query=71+N+Pecos+Rd+Ste+103+Las+Vegas+NV+89101" target="_blank" rel="noopener noreferrer" class="contact-item-text contact-link">71 N Pecos Rd, Ste 103, Las Vegas, NV 89101</a>
                             </div>
                         </div>
                     </div>
+                    <a href="tel:+17253021391" class="btn btn-primary contact-cta">Call (725) 302-1391</a>
                 </div>
                 <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
                     <div class="form-row">
@@ -1199,6 +1453,14 @@
                         <label for="message">Tell Us About Your Project</label>
                         <textarea id="message" name="message" rows="5" placeholder="Describe your vision, timeline, and any specific requirements..."></textarea>
                     </div>
+                    <div class="form-group form-optin">
+                        <input type="checkbox" id="smsConsent1" name="sms_consent_services" value="yes">
+                        <label for="smsConsent1">I agree to receive SMS messages from Artistic Entrances LLC regarding services, updates, and appointments. Message and data rates may apply. Reply STOP to unsubscribe. <em>(Optional)</em></label>
+                    </div>
+                    <div class="form-group form-optin">
+                        <input type="checkbox" id="smsConsent2" name="sms_consent_business" value="yes">
+                        <label for="smsConsent2">By providing my phone number, I consent to receive text messages from Artistic Entrances LLC for business communications and service notifications. Msg &amp; data rates may apply. Reply STOP to opt out. <em>(Optional)</em></label>
+                    </div>
                     <button type="submit" class="btn btn-primary">Send Inquiry</button>
                 </form>
             </div>
@@ -1209,6 +1471,16 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Artistic <span>Entrances</span></div>
+            <div class="footer-contact">
+                <a href="tel:+17253021391" class="footer-link">(725) 302-1391</a>
+                <a href="mailto:sales@artisticentrances.co" class="footer-link">sales@artisticentrances.co</a>
+                <span class="footer-address">71 N Pecos Rd, Ste 103, Las Vegas, NV 89101</span>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="tel:+17253021391" class="footer-cta">Call Now</a>
+            </div>
             <div class="footer-text">&copy; 2026 Artistic Entrances. All rights reserved.</div>
         </div>
     </footer>
@@ -1249,18 +1521,17 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Form submission
+        // Form submission - redirect to thank-you-contact page
         function handleSubmit(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
-            btn.textContent = 'Message Sent!';
-            btn.style.background = '#2a7a2a';
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            // In production: POST form data to your endpoint here, then redirect
             setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                e.target.reset();
-            }, 3000);
+                window.location.href = 'thank-you-contact.html';
+            }, 600);
         }
     </script>
 
