@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrought Iron Door Promotion | $500 Gift Card | Artistic Entrances</title>
+    <meta name="description" content="Limited time: Get a $500 Amazon Gift Card with your custom wrought iron door. Offer ends February 28, 2026. Elevate your entrance with Artistic Entrances.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E2C97E;
+            --gold-dark: #A8882E;
+            --black: #0A0A0A;
+            --dark: #141414;
+            --dark-lighter: #1E1E1E;
+            --dark-card: #1A1A1A;
+            --gray: #888888;
+            --gray-light: #AAAAAA;
+            --white: #F5F0E8;
+            --white-pure: #FFFFFF;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Raleway', 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 3rem;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1207 0%, #0a0a0a 40%, #0d0d0d 60%, #12100a 100%);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.05) 0%, transparent 60%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 50px,
+                rgba(201, 168, 76, 0.5) 50px,
+                rgba(201, 168, 76, 0.5) 51px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                rgba(201, 168, 76, 0.5) 50px,
+                rgba(201, 168, 76, 0.5) 51px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-subhead {
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-deadline {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-deadline strong {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            box-shadow: 0 4px 30px rgba(201, 168, 76, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .hero-scroll a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .hero-scroll a:hover {
+            color: var(--gold);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 1; transform: scaleY(1); }
+            50% { opacity: 0.5; transform: scaleY(0.7); }
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 7rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 550px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.5rem auto;
+        }
+
+        /* ===== PROMO DETAILS ===== */
+        .promo-details {
+            background: var(--dark);
+        }
+
+        .promo-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .promo-visual {
+            text-align: center;
+            position: relative;
+        }
+
+        .promo-amount {
+            font-family: var(--font-heading);
+            font-size: clamp(5rem, 12vw, 9rem);
+            font-weight: 400;
+            color: var(--gold);
+            line-height: 1;
+            text-shadow: 0 0 60px rgba(201, 168, 76, 0.2);
+        }
+
+        .promo-amount-label {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray-light);
+            margin-top: 0.5rem;
+        }
+
+        .how-it-works {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .how-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+        }
+
+        .how-step-num {
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .how-step h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.35rem;
+        }
+
+        .how-step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .countdown-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        /* ===== PRODUCT GALLERY ===== */
+        .product-gallery {
+            background: var(--black);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: linear-gradient(135deg, #1a1510, #0f0d08);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-placeholder {
+            font-size: 3rem;
+            opacity: 0.12;
+            color: var(--gold);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            opacity: 0.25;
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay span {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* ===== TRUST SECTION ===== */
+        .trust {
+            background: var(--dark);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .trust-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .trust-card:hover {
+            border-color: rgba(201, 168, 76, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .trust-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .trust-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .trust-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .trust-stat {
+            text-align: center;
+        }
+
+        .trust-stat-num {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--gold);
+            display: block;
+        }
+
+        .trust-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+        }
+
+        /* ===== URGENCY ===== */
+        .urgency {
+            background: linear-gradient(135deg, #1a1510 0%, #0f0d08 100%);
+            border-top: 1px solid rgba(201, 168, 76, 0.2);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .urgency-inner {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .urgency h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .urgency-deadline {
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .urgency p {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* ===== LEAD FORM ===== */
+        .lead-form-section {
+            background: var(--black);
+        }
+
+        .form-wrapper {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 3rem;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header .gift-highlight {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group select option {
+            background: var(--dark);
+        }
+
+        .form-group .form-hint {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-top: 0.35rem;
+        }
+
+        .form-optin {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .form-optin input {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--gold);
+        }
+
+        .form-optin label {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            font-weight: 300;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .form-privacy {
+            font-size: 0.75rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            font-size: 0.9rem;
+            padding: 1.1rem;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .form-success.visible {
+            display: block;
+        }
+
+        .form-success h3 {
+            font-family: var(--font-heading);
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .form-success p {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+        }
+
+        .form-fields.visible {
+            display: none;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            background: var(--dark);
+        }
+
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 0;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--gold);
+        }
+
+        .faq-icon {
+            font-size: 1.25rem;
+            color: var(--gold);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 0 1.5rem 0;
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--black);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .footer-logo span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-right: 1.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .promo-details-grid {
+                grid-template-columns: 1fr;
+            }
+            .promo-visual {
+                order: -1;
+            }
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            nav.scrolled {
+                padding: 0.75rem 1.5rem;
+            }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+            section {
+                padding: 4rem 1.5rem;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .trust-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links a {
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">Artistic <span>Entrances</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#gallery">Gallery</a></li>
+            <li><a href="#form">Claim Offer</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Limited Time Offer</div>
+            <h1>Transform Your Entrance. <em>Claim Your $500 Gift Card.</em></h1>
+            <p class="hero-subhead">Custom Wrought Iron Doors + $500 Amazon Gift Card</p>
+            <p class="hero-deadline">Offer ends <strong>February 28, 2026</strong></p>
+            <p>Elevate your home's first impression with handcrafted wrought iron doors—and receive a $500 Amazon Gift Card with your purchase. Secure, beautiful, built to last.</p>
+            <div class="hero-buttons">
+                <a href="#form" class="btn btn-primary">Claim Your $500 Gift Card</a>
+                <a href="#promo-details" class="btn btn-outline">See How It Works</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#promo-details">
+                Discover
+                <span class="scroll-line"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Promotion Details -->
+    <section class="promo-details" id="promo-details">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">The Offer</div>
+                <h2>Your $500 Amazon Gift Card Awaits</h2>
+                <div class="divider"></div>
+                <p>Purchase a custom wrought iron door and we'll send you a $500 Amazon Gift Card. Simple, valuable, limited time.</p>
+            </div>
+            <div class="promo-details-grid">
+                <div class="promo-visual fade-in">
+                    <span class="promo-amount">$500</span>
+                    <span class="promo-amount-label">Amazon Gift Card</span>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="cd-days">--</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="cd-hours">--</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="cd-mins">--</span>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="cd-secs">--</span>
+                            <span class="countdown-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="how-it-works fade-in">
+                    <div class="section-label">How It Works</div>
+                    <h2 style="margin-bottom: 1.5rem;">Four Simple Steps</h2>
+                    <div class="how-step">
+                        <div class="how-step-num">1</div>
+                        <div>
+                            <h4>Get a Quote</h4>
+                            <p>Submit the form below. We'll reach out to discuss your project and provide a custom quote.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">2</div>
+                        <div>
+                            <h4>Choose Your Door</h4>
+                            <p>Select from traditional, modern, Mediterranean, or fully custom designs. We craft to your vision.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">3</div>
+                        <div>
+                            <h4>Professional Installation</h4>
+                            <p>Our team installs your wrought iron door with precision and care.</p>
+                        </div>
+                    </div>
+                    <div class="how-step">
+                        <div class="how-step-num">4</div>
+                        <div>
+                            <h4>Receive Your Gift Card</h4>
+                            <p>After installation, we'll send your $500 Amazon Gift Card via email.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Gallery -->
+    <section class="product-gallery" id="gallery">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Styles</div>
+                <h2>Fully Customizable Wrought Iron Doors</h2>
+                <div class="divider"></div>
+                <p>From traditional scrollwork to sleek contemporary designs—crafted for your home.</p>
+            </div>
+            <div class="gallery-grid fade-in">
+                <div class="gallery-item">
+                    <span class="gallery-placeholder">&#9670;</span>
+                    <div class="gallery-overlay"><span>Traditional Scrollwork</span></div>
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-placeholder">&#9670;</span>
+                    <div class="gallery-overlay"><span>Modern Minimal</span></div>
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-placeholder">&#9670;</span>
+                    <div class="gallery-overlay"><span>Mediterranean</span></div>
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-placeholder">&#9670;</span>
+                    <div class="gallery-overlay"><span>Contemporary</span></div>
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-placeholder">&#9670;</span>
+                    <div class="gallery-overlay"><span>Estate Entry</span></div>
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-placeholder">&#9670;</span>
+                    <div class="gallery-overlay"><span>Custom Design</span></div>
+                </div>
+            </div>
+            <div class="gallery-cta">
+                <a href="#form" class="btn btn-primary">Get My Quote &amp; Gift Card</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust" id="trust">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Why Artistic Entrances</div>
+                <h2>Built to Last. Crafted to Impress.</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-card fade-in">
+                    <span class="trust-icon">&#9676;</span>
+                    <h3>Custom Craftsmanship</h3>
+                    <p>Every door is designed and built to your specifications. No two entrances are alike.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <span class="trust-icon">&#9830;</span>
+                    <h3>Premium Materials</h3>
+                    <p>We use only high-quality wrought iron and finishes built for durability and beauty.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <span class="trust-icon">&#9733;</span>
+                    <h3>Professional Installation</h3>
+                    <p>Expert installers ensure a perfect fit, weather sealing, and lasting performance.</p>
+                </div>
+                <div class="trust-card fade-in">
+                    <span class="trust-icon">&#10070;</span>
+                    <h3>Trusted Reputation</h3>
+                    <p>Years of experience and hundreds of satisfied homeowners across the Las Vegas area.</p>
+                </div>
+            </div>
+            <div class="trust-stats fade-in">
+                <div class="trust-stat">
+                    <span class="trust-stat-num">500+</span>
+                    <span class="trust-stat-label">Doors Installed</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-stat-num">15+</span>
+                    <span class="trust-stat-label">Years in Business</span>
+                </div>
+                <div class="trust-stat">
+                    <span class="trust-stat-num">100%</span>
+                    <span class="trust-stat-label">Custom</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency -->
+    <section class="urgency">
+        <div class="container">
+            <div class="urgency-inner fade-in">
+                <h2>Don't Miss Out</h2>
+                <p class="urgency-deadline">Offer ends February 28, 2026</p>
+                <p>This $500 Amazon Gift Card promotion is for a limited time. Secure your custom wrought iron door and claim your gift card before the deadline.</p>
+                <a href="#form" class="btn btn-primary">Claim Your $500 Gift Card</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form -->
+    <section class="lead-form-section" id="form">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">Get Started</div>
+                <h2>Request Your Quote</h2>
+                <div class="divider"></div>
+                <p>Submit the form below and we'll contact you to discuss your project—and your $500 gift card.</p>
+            </div>
+            <div class="form-wrapper fade-in">
+                <div class="form-header">
+                    <h2>Get My $500 Gift Card</h2>
+                    <p class="gift-highlight">Complete the form to claim your offer.</p>
+                </div>
+                <div class="form-fields" id="formFields">
+                    <form class="contact-form" id="promoForm" onsubmit="handlePromoSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Zip Code *</label>
+                            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" maxlength="5" placeholder="12345" required>
+                            <span class="form-hint">We'll confirm service area availability.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="timeline">Project Timeline *</label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option value="immediately">Immediately</option>
+                                <option value="1-3">1–3 months</option>
+                                <option value="3-6">3–6 months</option>
+                                <option value="browsing">Just browsing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="style">Door Style Preference</label>
+                            <select id="style" name="style">
+                                <option value="">Select style (optional)</option>
+                                <option value="traditional">Traditional</option>
+                                <option value="modern">Modern</option>
+                                <option value="mediterranean">Mediterranean</option>
+                                <option value="contemporary">Contemporary</option>
+                                <option value="custom">Custom / Not sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Project</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Door location, size, or special requests..."></textarea>
+                        </div>
+                        <div class="form-group form-optin">
+                            <input type="checkbox" id="optin" name="optin" value="yes">
+                            <label for="optin">Yes, send me design inspiration and exclusive offers.</label>
+                        </div>
+                        <p class="form-privacy">By submitting, you agree to be contacted about your inquiry. We respect your privacy and will not share your information.</p>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Get My $500 Gift Card</button>
+                    </form>
+                </div>
+                <div class="form-success" id="formSuccess">
+                    <h3>Thank You!</h3>
+                    <p>We've received your request. A team member will contact you shortly to discuss your wrought iron door project and your $500 Amazon Gift Card offer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-label">FAQ</div>
+                <h2>Common Questions</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
+                        How do I receive the $500 Amazon Gift Card?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-btn">
+                        <div class="faq-answer-inner">After your custom wrought iron door is purchased and installed, we'll send your $500 Amazon Gift Card via email. Details will be provided when you complete your project.</div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
+                        What types of doors qualify for this offer?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-btn">
+                        <div class="faq-answer-inner">This offer applies to custom wrought iron door purchases. Single doors, double doors, and custom designs all qualify. Our team will confirm eligibility when we discuss your project.</div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+                        What's included in the installation?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-btn">
+                        <div class="faq-answer-inner">Professional installation includes removal of your existing door (if applicable), fitting and securing the new wrought iron door, weather sealing, and hardware alignment. Your quote will outline all included services.</div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
+                        How long does the process take?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq4" role="region" aria-labelledby="faq4-btn">
+                        <div class="faq-answer-inner">From design and quote to installation, timeline depends on the complexity of your door. Typically, custom wrought iron doors are delivered and installed within several weeks. We'll give you a clear timeline when you request a quote.</div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq5" id="faq5-btn">
+                        Do you serve my area?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq5" role="region" aria-labelledby="faq5-btn">
+                        <div class="faq-answer-inner">We serve the Las Vegas area and surrounding regions. When you submit your zip code, we'll confirm whether we can provide service to your location and will reach out with next steps.</div>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq6" id="faq6-btn">
+                        What happens after I submit the form?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer" id="faq6" role="region" aria-labelledby="faq6-btn">
+                        <div class="faq-answer-inner">A member of our team will contact you within 1–2 business days to discuss your project, answer questions, and schedule a consultation or site visit if needed. There's no obligation—we're here to help you explore your options.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo">Artistic <span>Entrances</span></a>
+            <div class="footer-links">
+                <a href="index.html#contact">Contact</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-text">&copy; 2026 Artistic Entrances. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        function closeNav() { navLinks.classList.remove('active'); }
+
+        // Countdown to Feb 28, 2026 23:59:59
+        const endDate = new Date('2026-02-28T23:59:59').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = endDate - now;
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent = '0';
+                document.getElementById('cd-hours').textContent = '0';
+                document.getElementById('cd-mins').textContent = '0';
+                document.getElementById('cd-secs').textContent = '0';
+                return;
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('cd-days').textContent = days;
+            document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+            document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Scroll fade-in
+        const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const answer = item.querySelector('.faq-answer');
+                const inner = item.querySelector('.faq-answer-inner');
+                const isOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-answer').style.maxHeight = '0';
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = inner.scrollHeight + 'px';
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // Form submit (placeholder - integrate with GoHighLevel webhook / GTM as needed)
+        function handlePromoSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('promoForm');
+            const btn = document.getElementById('submitBtn');
+            const formFields = document.getElementById('formFields');
+            const formSuccess = document.getElementById('formSuccess');
+
+            // Simulate submit - replace with actual POST to your endpoint
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                formFields.classList.add('visible');
+                formSuccess.classList.add('visible');
+                btn.style.display = 'none';
+                // In production: POST to GoHighLevel, fire GTM conversion, etc.
+            }, 800);
+        }
+    </script>
+
+</body>
+</html>
