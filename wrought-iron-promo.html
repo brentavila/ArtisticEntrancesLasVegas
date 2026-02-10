@@ -338,6 +338,9 @@
             font-weight: 300;
             line-height: 1.8;
         }
+        .hero-lead-mobile {
+            display: none;
+        }
 
         .hero-buttons {
             display: flex;
@@ -1163,6 +1166,68 @@
             .nav-drawer-backdrop.active { opacity: 1; pointer-events: auto; }
             .nav-toggle { display: flex; z-index: 1002; }
             .nav-cta-mobile { display: inline-flex; }
+
+            /* Mobile hero: less clutter, more impact */
+            .hero-content {
+                padding: 0 1.5rem;
+                max-width: 100%;
+            }
+            .hero-badge {
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                padding: 0.4rem 1rem;
+                margin-bottom: 1.25rem;
+            }
+            .hero h1 {
+                font-size: clamp(1.75rem, 8vw, 2.5rem);
+                line-height: 1.3;
+                margin-bottom: 0.75rem;
+            }
+            .hero-subhead {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            .hero-deadline {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+            .hero-lead {
+                display: none;
+            }
+            .hero-lead-mobile {
+                display: block;
+                font-size: 1rem;
+                color: var(--gray-light);
+                margin: 0 auto 1.5rem;
+                font-weight: 300;
+                line-height: 1.5;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: stretch;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+                padding: 0.95rem 1.25rem;
+                font-size: 0.75rem;
+            }
+            .hero-buttons .hero-btn-secondary {
+                display: none;
+            }
+            .hero-scroll {
+                bottom: 1.25rem;
+            }
+            .hero-scroll a {
+                font-size: 0.65rem;
+            }
+            .scroll-line {
+                height: 28px;
+            }
+
             .form-row {
                 grid-template-columns: 1fr;
             }
@@ -1231,11 +1296,12 @@
             <h1>Transform Your Entrance. <em>Claim Your $500 Gift Card.</em></h1>
             <p class="hero-subhead">Custom Wrought Iron Doors + $500 Amazon Gift Card</p>
             <p class="hero-deadline">Offer ends <strong>February 28, 2026</strong></p>
-            <p>Elevate your home's first impression with handcrafted wrought iron doors—and receive a $500 Amazon Gift Card with your purchase. Secure, beautiful, built to last.</p>
+            <p class="hero-lead">Elevate your home's first impression with handcrafted wrought iron doors—and receive a $500 Amazon Gift Card with your purchase. Secure, beautiful, built to last.</p>
+            <p class="hero-lead-mobile">Wrought iron doors + $500 gift card. Limited time.</p>
             <div class="hero-buttons">
                 <a href="#form" class="btn btn-primary">Claim Your $500 Gift Card</a>
                 <a href="tel:+17253021391" class="btn btn-outline">Call (725) 302-1391</a>
-                <a href="#promo-details" class="btn btn-outline">See How It Works</a>
+                <a href="#promo-details" class="btn btn-outline hero-btn-secondary">See How It Works</a>
             </div>
         </div>
         <div class="hero-scroll">
