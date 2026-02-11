@@ -1115,10 +1115,13 @@
                 visibility: hidden;
                 opacity: 0;
                 transition: visibility 0.25s ease, opacity 0.25s ease;
+                pointer-events: none;
+                touch-action: manipulation;
             }
             .nav-drawer.active {
                 visibility: visible;
                 opacity: 1;
+                pointer-events: auto;
             }
             .nav-drawer-close {
                 display: flex;
@@ -1174,6 +1177,8 @@
                 min-height: 48px;
                 line-height: 1.4;
                 box-sizing: border-box;
+                cursor: pointer;
+                touch-action: manipulation;
             }
             .nav-links a:hover,
             .nav-links a:focus { color: var(--gold); }
@@ -1738,19 +1743,29 @@
             document.body.style.overflow = '';
         }
 
-        navToggle.addEventListener('click', function() {
+        function toggleNav() {
             if (navDrawer.classList.contains('active')) closeNav();
             else openNav();
-        });
-        navDrawerClose.addEventListener('click', closeNav);
-        navBackdrop.addEventListener('click', closeNav);
-
-        navDrawer.addEventListener('click', function(e) {
-            var link = e.target.closest('a');
-            if (!link || !link.getAttribute('href')) return;
+        }
+        navToggle.addEventListener('click', toggleNav);
+        navToggle.addEventListener('touchend', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            var href = link.getAttribute('href').trim();
+            toggleNav();
+        }, { passive: false });
+        navDrawerClose.addEventListener('click', closeNav);
+        navDrawerClose.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeNav();
+        }, { passive: false });
+        navBackdrop.addEventListener('click', closeNav);
+        navBackdrop.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeNav();
+        }, { passive: false });
+
+        function navigateFromLink(link) {
+            var href = (link.getAttribute('href') || '').trim();
+            if (!href) return;
             closeNav();
             setTimeout(function() {
                 if (href.indexOf('tel:') === 0 || href.indexOf('mailto:') === 0) {
@@ -1762,7 +1777,24 @@
                 } else {
                     window.location.href = href;
                 }
-            }, 80);
+            }, 100);
+        }
+        var lastNavLinkTouch = 0;
+        navDrawer.addEventListener('touchend', function(e) {
+            var link = e.target.closest('a');
+            if (!link || !link.getAttribute('href')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            lastNavLinkTouch = Date.now();
+            navigateFromLink(link);
+        }, true);
+        navDrawer.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (!link || !link.getAttribute('href')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (Date.now() - lastNavLinkTouch < 400) return;
+            navigateFromLink(link);
         }, true);
 
         // Countdown to Feb 28, 2026 23:59:59
