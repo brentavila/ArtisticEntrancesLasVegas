@@ -1822,8 +1822,33 @@
             });
         });
 
-        // Form submit - reCAPTCHA v3 token then redirect
+        // Form submit - reCAPTCHA v3, send to GoHighLevel webhook, then redirect
         var RECAPTCHA_SITE_KEY = '6Ldua2gsAAAAAK5lgSR7SWBodFCp9HAcYGZkZ4ny';
+        var PROMO_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/uK4q8lpwDpm1J32DZxO4/webhook-trigger/6d629f3d-367e-4e2c-a8b5-97dc2580adb2';
+
+        function getFormPayload(form) {
+            var payload = {};
+            var inputs = form.querySelectorAll('input, select, textarea');
+            for (var i = 0; i < inputs.length; i++) {
+                var el = inputs[i];
+                var name = el.name;
+                if (!name) continue;
+                if (el.type === 'checkbox') {
+                    payload[name] = el.checked ? (el.value || 'yes') : '';
+                } else {
+                    payload[name] = el.value || '';
+                }
+            }
+            return payload;
+        }
+
+        function completeSubmit(btn) {
+            // Always complete UX: redirect to thank-you (even if webhook failed)
+            btn.textContent = 'Get My $500 Gift Card';
+            btn.disabled = true;
+            window.location.href = 'thank-you.html';
+        }
+
         function handlePromoSubmit(e) {
             e.preventDefault();
             var form = document.getElementById('promoForm');
@@ -1837,11 +1862,27 @@
             grecaptcha.ready(function() {
                 grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' }).then(function(token) {
                     document.getElementById('promoRecaptchaToken').value = token;
-                    // In production: POST form data (including g-recaptcha-response token) to your endpoint,
-                    // then verify with Google reCAPTCHA v3 verify API using your secret key on the server.
-                    setTimeout(function() {
-                        window.location.href = 'thank-you.html';
-                    }, 600);
+                    var payload = getFormPayload(form);
+                    var controller = new AbortController();
+                    var timeoutId = setTimeout(function() { controller.abort(); }, 10000);
+                    fetch(PROMO_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                        signal: controller.signal
+                    }).then(function(response) {
+                        clearTimeout(timeoutId);
+                        if (!response.ok) {
+                            throw new Error('Webhook returned ' + response.status);
+                        }
+                        return response;
+                    }).then(function() {
+                        completeSubmit(btn);
+                    }).catch(function(err) {
+                        clearTimeout(timeoutId);
+                        // Don't break UX: still send user to thank-you page
+                        completeSubmit(btn);
+                    });
                 }).catch(function() {
                     btn.textContent = 'Get My $500 Gift Card';
                     btn.disabled = false;
