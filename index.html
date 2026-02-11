@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TPFGF2VM');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artistic Entrances | Handcrafted Custom Doors</title>
@@ -9,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="preload" href="images/hero-image-wide-shot.jpg" as="image">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ldua2gsAAAAAK5lgSR7SWBodFCp9HAcYGZkZ4ny" async defer></script>
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -994,9 +1001,6 @@
             width: 100%;
         }
 
-        .g-recaptcha-wrap {
-            margin-bottom: 1rem;
-        }
         .form-legal-links {
             margin-top: 1.25rem;
             font-size: 0.8rem;
@@ -1375,6 +1379,10 @@
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPFGF2VM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -1694,9 +1702,7 @@
                         <input type="checkbox" id="smsConsent2" name="sms_consent_business" value="yes">
                         <label for="smsConsent2">By providing my phone number, I consent to receive text messages from Artistic Entrances LLC for business communications and service notifications. Msg &amp; data rates may apply. Reply STOP to opt out. <em>(Optional)</em></label>
                     </div>
-                    <div class="form-group g-recaptcha-wrap">
-                        <div class="g-recaptcha" data-sitekey="6Ldua2gsAAAAAK5lgSR7SWBodFCp9HAcYGZkZ4ny"></div>
-                    </div>
+                    <input type="hidden" name="g-recaptcha-response" id="contactRecaptchaToken">
                     <button type="submit" class="btn btn-primary">Send Inquiry</button>
                     <p class="form-legal-links">
                         <a href="privacy.html">Privacy Policy</a>
@@ -1801,21 +1807,31 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Form submission - redirect to thank-you-contact page
+        // Form submission - reCAPTCHA v3 token then redirect
+        var RECAPTCHA_SITE_KEY = '6Ldua2gsAAAAAK5lgSR7SWBodFCp9HAcYGZkZ4ny';
         function handleSubmit(e) {
             e.preventDefault();
-            if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) {
-                alert('Please complete the reCAPTCHA verification.');
+            var btn = e.target.querySelector('button[type="submit"]');
+            if (typeof grecaptcha === 'undefined') {
+                alert('Security check is loading. Please try again in a moment.');
                 return;
             }
-            const btn = e.target.querySelector('button[type="submit"]');
             btn.textContent = 'Sending...';
             btn.disabled = true;
-            // In production: POST form data (including g-recaptcha-response) to your endpoint,
-            // then verify the token with Google using your reCAPTCHA secret key on the server.
-            setTimeout(() => {
-                window.location.href = 'thank-you-contact.html';
-            }, 600);
+            grecaptcha.ready(function() {
+                grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' }).then(function(token) {
+                    document.getElementById('contactRecaptchaToken').value = token;
+                    // In production: POST form data (including g-recaptcha-response token) to your endpoint,
+                    // then verify with Google reCAPTCHA v3 verify API using your secret key on the server.
+                    setTimeout(function() {
+                        window.location.href = 'thank-you-contact.html';
+                    }, 600);
+                }).catch(function() {
+                    btn.textContent = 'Send Inquiry';
+                    btn.disabled = false;
+                    alert('Verification failed. Please try again.');
+                });
+            });
         }
     </script>
 

@@ -1,11 +1,11 @@
 # reCAPTCHA – Server-Side Verification
 
-The contact form (index.html) and promo form (wrought-iron-promo.html) both use reCAPTCHA v2. The widget is loaded with a **site key** in the HTML. On submit, the form includes a `g-recaptcha-response` token.
+The contact form (index.html) and promo form (wrought-iron-promo.html) both use **reCAPTCHA v3** (invisible). On submit, the frontend gets a token and sends it in the hidden field `g-recaptcha-response`.
 
 ## Frontend (already done)
 
-- Each form has a reCAPTCHA widget with `data-sitekey="YOUR_RECAPTCHA_SITE_KEY"`.
-- **Replace `YOUR_RECAPTCHA_SITE_KEY`** in both `index.html` and `wrought-iron-promo.html` with your **reCAPTCHA site key** from the [Google reCAPTCHA admin console](https://www.google.com/recaptcha/admin). The site key is safe to use in the browser.
+- The script loads with `?render=YOUR_SITE_KEY`. The site key is in the HTML/JS.
+- On submit, `grecaptcha.execute()` gets a token and sets it on a hidden input; your server receives it with the form.
 
 ## Server-side (your backend)
 
@@ -23,6 +23,6 @@ When you process the form (e.g. GoHighLevel webhook, Formspree, or your own API)
 
 3. Use the secret key from your reCAPTCHA admin console. A copy is stored locally in `recaptcha-secret.txt` (that file is in `.gitignore` and must **never** be committed or exposed in client code).
 
-4. Only accept the form submission if the verify response contains `"success": true`.
+4. Only accept the form submission if the verify response contains `"success": true`. For v3, the response also includes a `"score"` (0.0–1.0); you can require a minimum score (e.g. ≥ 0.5) to block likely bots.
 
 Documentation: https://developers.google.com/recaptcha/docs/verify
