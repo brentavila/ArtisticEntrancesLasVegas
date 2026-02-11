@@ -880,6 +880,19 @@
             padding: 1.1rem;
         }
 
+        .form-legal-links {
+            margin-top: 1.25rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        .form-legal-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+        }
+        .form-legal-links a:hover {
+            color: var(--gold);
+        }
+
         .form-success {
             display: none;
             text-align: center;
@@ -1528,10 +1541,16 @@
                                 <input type="tel" id="phone" name="phone" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="zip">Zip Code *</label>
-                            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" maxlength="5" placeholder="12345" required>
-                            <span class="form-hint">We'll confirm service area availability.</span>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="zip">Zip Code *</label>
+                                <input type="text" id="zip" name="zip" pattern="[0-9]{5}" maxlength="5" placeholder="12345" required>
+                                <span class="form-hint">We'll confirm service area availability.</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required placeholder="Your city">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="timeline">Project Timeline *</label>
@@ -1544,20 +1563,17 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="style">Door Style Preference</label>
-                            <select id="style" name="style">
-                                <option value="">Select style (optional)</option>
-                                <option value="traditional">Traditional</option>
-                                <option value="modern">Modern</option>
-                                <option value="mediterranean">Mediterranean</option>
-                                <option value="contemporary">Contemporary</option>
-                                <option value="custom">Custom / Not sure</option>
+                            <label for="doorSize">Door Size *</label>
+                            <select id="doorSize" name="doorSize" required>
+                                <option value="">Select door size</option>
+                                <option value="single">Single door</option>
+                                <option value="double">Double doors</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="budget">Estimated Budget</label>
-                            <select id="budget" name="budget">
-                                <option value="">Select budget range (optional)</option>
+                            <label for="budget">Estimated Budget *</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select budget range</option>
                                 <option value="under-5">Under $5,000</option>
                                 <option value="5-10">$5,000 – $10,000</option>
                                 <option value="10-15">$10,000 – $15,000</option>
@@ -1580,6 +1596,11 @@
                         </div>
                         <p class="form-privacy">By submitting, you agree to be contacted about your inquiry. We respect your privacy and will not share your information.</p>
                         <button type="submit" class="btn btn-primary" id="submitBtn">Get My $500 Gift Card</button>
+                        <p class="form-legal-links">
+                            <a href="privacy.html">Privacy Policy</a>
+                            <span aria-hidden="true"> · </span>
+                            <a href="terms.html">Terms of Service</a>
+                        </p>
                     </form>
                 </div>
                 <div class="form-success" id="formSuccess">
