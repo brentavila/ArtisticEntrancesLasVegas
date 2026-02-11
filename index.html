@@ -1167,111 +1167,99 @@
                 padding: 0.75rem 1.5rem;
             }
 
-            /* Mobile: right slide-in drawer (Nike-style) */
+            /* Mobile: full-screen overlay menu (single layer, reliable taps) */
             .nav-drawer {
                 position: fixed;
-                top: 0;
-                right: 0;
-                width: 72%;
-                max-width: 320px;
+                inset: 0;
+                width: 100%;
                 height: 100%;
-                background: var(--white-pure);
+                background: rgba(10, 10, 10, 0.98);
                 flex-direction: column;
                 align-items: stretch;
                 justify-content: flex-start;
                 z-index: 1001;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
+                padding: 5rem 1.5rem 2rem;
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0.25s ease, opacity 0.25s ease;
             }
             .nav-drawer.active {
-                transform: translateX(0);
+                visibility: visible;
+                opacity: 1;
             }
             .nav-drawer-close {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                position: absolute;
+                position: fixed;
                 top: 1rem;
                 right: 1rem;
-                width: 44px;
-                height: 44px;
+                width: 48px;
+                height: 48px;
                 padding: 0;
                 background: none;
                 border: none;
                 font-size: 1.75rem;
                 line-height: 1;
-                color: #1a1a1a;
+                color: var(--white);
                 cursor: pointer;
-                transition: color 0.2s ease;
+                z-index: 2;
+                -webkit-tap-highlight-color: transparent;
             }
-            .nav-drawer-close:hover {
+            .nav-drawer-close:hover,
+            .nav-drawer-close:focus {
                 color: var(--gold);
             }
             .nav-drawer-footer {
                 display: block;
-                padding: 1.5rem 1.5rem 2rem;
-                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                padding: 1.5rem 0 0;
                 margin-top: auto;
             }
             .nav-drawer-cta-btn {
+                display: block;
                 width: 100%;
                 text-align: center;
+                padding: 1rem 1.5rem;
             }
             .nav-links {
                 display: flex;
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0;
-                padding: 4rem 1.5rem 1rem;
+                padding: 0;
                 list-style: none;
                 margin: 0;
             }
             .nav-links li {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             }
             .nav-links a {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1.1rem 0;
-                font-size: 1rem;
-                color: #1a1a1a;
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                color: var(--white);
+                text-decoration: none;
                 text-transform: none;
                 letter-spacing: 0.5px;
+                -webkit-tap-highlight-color: transparent;
+                min-height: 48px;
+                line-height: 1.4;
+                box-sizing: border-box;
+            }
+            .nav-links a:hover,
+            .nav-links a:focus {
+                color: var(--gold);
             }
             .nav-links a::after {
-                content: '›';
-                font-size: 1.25rem;
-                color: #888;
-                position: static;
-                width: auto;
-                height: auto;
-                background: none;
-            }
-            .nav-links a:hover {
-                color: var(--gold);
-            }
-            .nav-links a:hover::after {
-                color: var(--gold);
-            }
-            .nav-links .nav-cta {
                 display: none;
             }
-            .nav-drawer-backdrop {
+            .nav-links .nav-cta {
                 display: block;
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
             }
-            .nav-drawer-backdrop.active {
-                opacity: 1;
-                pointer-events: auto;
+            .nav-drawer-backdrop {
+                display: none;
             }
             .nav-toggle {
                 display: flex;
@@ -1387,23 +1375,23 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="index.html" class="nav-logo">Artistic <span>Entrances</span></a>
-        <div class="nav-drawer" id="navDrawer">
-            <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">&times;</button>
+        <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+            <button type="button" class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">&times;</button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about" onclick="closeNav()">About</a></li>
-                <li><a href="#services" onclick="closeNav()">Services</a></li>
-                <li><a href="#gallery" onclick="closeNav()">Gallery</a></li>
-                <li><a href="wrought-iron-promo.html" onclick="closeNav()">Promotion</a></li>
-                <li><a href="#testimonials" onclick="closeNav()">Testimonials</a></li>
-                <li><a href="#contact" onclick="closeNav()">Contact</a></li>
-                <li><a href="tel:+17253021391" class="nav-cta" onclick="closeNav()">Call (725) 302-1391</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="wrought-iron-promo.html">Promotion</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="tel:+17253021391" class="nav-cta">Call (725) 302-1391</a></li>
             </ul>
             <div class="nav-drawer-footer">
-                <a href="tel:+17253021391" class="btn btn-primary nav-drawer-cta-btn" onclick="closeNav()">Call (725) 302-1391</a>
+                <a href="tel:+17253021391" class="btn btn-primary nav-drawer-cta-btn">Call (725) 302-1391</a>
             </div>
         </div>
         <a href="tel:+17253021391" class="nav-cta nav-cta-mobile" aria-label="Call (725) 302-1391">Call</a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu">
             <span></span>
             <span></span>
             <span></span>
@@ -1742,7 +1730,7 @@
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile nav: slide-in drawer + backdrop
+        // Mobile nav: full-screen overlay, all navigation in JS for reliable taps
         const navToggle = document.getElementById('navToggle');
         const navDrawer = document.getElementById('navDrawer');
         const navBackdrop = document.getElementById('navBackdrop');
@@ -1751,41 +1739,43 @@
         function openNav() {
             navDrawer.classList.add('active');
             navBackdrop.classList.add('active');
+            navDrawer.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
         }
         function closeNav() {
             navDrawer.classList.remove('active');
             navBackdrop.classList.remove('active');
+            navDrawer.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
-        window.closeNav = closeNav;
 
-        navToggle.addEventListener('click', () => {
+        navToggle.addEventListener('click', function() {
             if (navDrawer.classList.contains('active')) closeNav();
             else openNav();
         });
         navDrawerClose.addEventListener('click', closeNav);
         navBackdrop.addEventListener('click', closeNav);
 
-        // Close drawer after a short delay when a link is clicked so navigation can complete first
+        // Handle all menu link taps in JS (capture phase so we run first)
         navDrawer.addEventListener('click', function(e) {
             var link = e.target.closest('a');
-            if (link && link.getAttribute('href')) {
-                e.preventDefault();
-                var href = link.getAttribute('href');
-                closeNav();
-                setTimeout(function() {
-                    if (href.startsWith('tel:') || href.startsWith('mailto:')) {
-                        window.location.href = href;
-                    } else if (href.startsWith('#') && href.length > 1) {
-                        var el = document.getElementById(href.slice(1));
-                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    } else {
-                        window.location.href = href;
-                    }
-                }, 150);
-            }
-        });
+            if (!link || !link.getAttribute('href')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            var href = link.getAttribute('href').trim();
+            closeNav();
+            setTimeout(function() {
+                if (href.indexOf('tel:') === 0 || href.indexOf('mailto:') === 0) {
+                    window.location.href = href;
+                } else if (href.indexOf('#') === 0 && href.length > 1) {
+                    var id = href.slice(1).split('?')[0];
+                    var el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    window.location.href = href;
+                }
+            }, 80);
+        }, true);
 
         // Scroll fade-in animations
         const observerOptions = {
