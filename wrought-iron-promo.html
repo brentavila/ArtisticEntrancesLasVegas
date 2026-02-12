@@ -123,7 +123,7 @@
         }
 
         /* ===== NAVIGATION ===== */
-        nav {
+        .nav-wrapper {
             position: fixed;
             top: 0;
             left: 0;
@@ -135,12 +135,22 @@
             align-items: center;
             transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
         }
-
-        nav.scrolled {
+        .nav-wrapper.scrolled .nav-inner {
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
-            padding: 0.75rem 3rem;
             box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav-wrapper.scrolled {
+            padding: 0.75rem 3rem;
+        }
+        nav.nav-inner {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: -0.5rem 0;
+            padding: 0.5rem 0;
+            border-radius: 4px;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
         }
 
         .nav-logo {
@@ -1092,10 +1102,10 @@
         }
 
         @media (max-width: 768px) {
-            nav {
+            .nav-wrapper {
                 padding: 1rem 1.5rem;
             }
-            nav.scrolled {
+            .nav-wrapper.scrolled {
                 padding: 0.75rem 1.5rem;
             }
             /* Mobile: full-screen overlay menu (single layer, reliable taps) */
@@ -1183,7 +1193,6 @@
             .nav-links a:hover,
             .nav-links a:focus { color: var(--gold); }
             .nav-links a::after { display: none; }
-            .nav-links .nav-cta { display: block; }
             .nav-drawer-backdrop { display: none; }
             .nav-toggle { display: flex; z-index: 1002; }
             .nav-cta-mobile { display: inline-flex; }
@@ -1284,9 +1293,17 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <a href="index.html" class="nav-logo">Artistic <span>Entrances</span></a>
+    <!-- Navigation: wrapper has no filter so drawer (fixed) is never cropped when scrolled -->
+    <div id="navbar" class="nav-wrapper">
+        <nav class="nav-inner">
+            <a href="index.html" class="nav-logo">Artistic <span>Entrances</span></a>
+            <a href="tel:+17253021391" class="nav-cta nav-cta-mobile" aria-label="Call (725) 302-1391">Call</a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
         <div class="nav-drawer" id="navDrawer" aria-hidden="true">
             <button type="button" class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">&times;</button>
             <ul class="nav-links" id="navLinks">
@@ -1296,19 +1313,12 @@
                 <li><a href="index.html#gallery">Gallery</a></li>
                 <li><a href="#form">Claim Offer</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="tel:+17253021391" class="nav-cta">Call (725) 302-1391</a></li>
             </ul>
             <div class="nav-drawer-footer">
                 <a href="tel:+17253021391" class="btn btn-primary nav-drawer-cta-btn">Call (725) 302-1391</a>
             </div>
         </div>
-        <a href="tel:+17253021391" class="nav-cta nav-cta-mobile" aria-label="Call (725) 302-1391">Call</a>
-        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+    </div>
     <div class="nav-drawer-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
     <!-- Hero -->
@@ -1549,8 +1559,8 @@
                                 <input type="email" id="email" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone *</label>
-                                <input type="tel" id="phone" name="phone" required>
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
                             </div>
                         </div>
                         <div class="form-row">
@@ -1600,11 +1610,11 @@
                         </div>
                         <div class="form-group form-optin">
                             <input type="checkbox" id="smsConsent1" name="sms_consent_services" value="yes">
-                            <label for="smsConsent1">I agree to receive SMS messages from Artistic Entrances LLC regarding services, updates, and appointments. Message and data rates may apply. Reply STOP to unsubscribe. <em>(Optional)</em></label>
+                            <label for="smsConsent1">I Consent to Receive SMS Notifications, Appointment Reminders &amp; Order Status Updates from Artistic Entrances LLC. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance. You can reply STOP to unsubscribe at any time.</label>
                         </div>
                         <div class="form-group form-optin">
                             <input type="checkbox" id="smsConsent2" name="sms_consent_business" value="yes">
-                            <label for="smsConsent2">By providing my phone number, I consent to receive text messages from Artistic Entrances LLC for business communications and service notifications. Msg &amp; data rates may apply. Reply STOP to opt out. <em>(Optional)</em></label>
+                            <label for="smsConsent2">I Consent to Receive the Occasional Marketing Messages from Artistic Entrances LLC. You Can Reply Stop to unsubscribe at any time.</label>
                         </div>
                         <input type="hidden" name="g-recaptcha-response" id="promoRecaptchaToken">
                         <p class="form-privacy">By submitting, you agree to be contacted about your inquiry. We respect your privacy and will not share your information.</p>
