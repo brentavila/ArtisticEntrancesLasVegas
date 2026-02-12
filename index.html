@@ -1848,11 +1848,30 @@
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Form submission - reCAPTCHA v3 token then redirect
+        // Form submission - reCAPTCHA v3, send to webhook, then redirect
         var RECAPTCHA_SITE_KEY = '6Ldua2gsAAAAAK5lgSR7SWBodFCp9HAcYGZkZ4ny';
+        var CONTACT_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/uK4q8lpwDpm1J32DZxO4/webhook-trigger/c797fb28-a301-4693-941f-f201afa1ab84';
+
+        function getContactFormPayload(form) {
+            var payload = {};
+            var inputs = form.querySelectorAll('input, select, textarea');
+            for (var i = 0; i < inputs.length; i++) {
+                var el = inputs[i];
+                var name = el.name;
+                if (!name) continue;
+                if (el.type === 'checkbox') {
+                    payload[name] = el.checked ? (el.value || 'yes') : '';
+                } else {
+                    payload[name] = el.value || '';
+                }
+            }
+            return payload;
+        }
+
         function handleSubmit(e) {
             e.preventDefault();
-            var btn = e.target.querySelector('button[type="submit"]');
+            var form = e.target;
+            var btn = form.querySelector('button[type="submit"]');
             if (typeof grecaptcha === 'undefined') {
                 alert('Security check is loading. Please try again in a moment.');
                 return;
@@ -1862,11 +1881,27 @@
             grecaptcha.ready(function() {
                 grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' }).then(function(token) {
                     document.getElementById('contactRecaptchaToken').value = token;
-                    // In production: POST form data (including g-recaptcha-response token) to your endpoint,
-                    // then verify with Google reCAPTCHA v3 verify API using your secret key on the server.
-                    setTimeout(function() {
+                    var payload = getContactFormPayload(form);
+                    var controller = new AbortController();
+                    var timeoutId = setTimeout(function() { controller.abort(); }, 10000);
+                    fetch(CONTACT_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                        signal: controller.signal
+                    }).then(function(response) {
+                        clearTimeout(timeoutId);
+                        if (!response.ok) {
+                            throw new Error('Webhook returned ' + response.status);
+                        }
+                        return response;
+                    }).then(function() {
                         window.location.href = 'thank-you-contact.html';
-                    }, 600);
+                    }).catch(function() {
+                        clearTimeout(timeoutId);
+                        // Still redirect so user gets confirmation even if webhook fails
+                        window.location.href = 'thank-you-contact.html';
+                    });
                 }).catch(function() {
                     btn.textContent = 'Send Inquiry';
                     btn.disabled = false;
