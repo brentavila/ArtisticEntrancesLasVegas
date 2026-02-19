@@ -2016,6 +2016,24 @@
     </footer>
 
     <script>
+        // Hero text block: counteract browser zoom so it stays fixed size
+        (function() {
+            function updateHeroZoom() {
+                var scale = (window.visualViewport && window.visualViewport.scale) || 1;
+                var hero = document.querySelector('.hero-content-wrapper');
+                if (hero) {
+                    hero.style.transform = 'scale(' + (1 / scale) + ')';
+                    hero.style.transformOrigin = 'left bottom';
+                }
+            }
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', updateHeroZoom);
+                window.visualViewport.addEventListener('scroll', updateHeroZoom);
+            }
+            window.addEventListener('resize', updateHeroZoom);
+            updateHeroZoom();
+        })();
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
