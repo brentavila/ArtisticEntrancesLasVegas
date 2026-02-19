@@ -292,13 +292,35 @@
             position: relative;
             z-index: 2;
             max-width: 560px;
+            min-width: 0;
             padding: 2rem 2rem 2.5rem 2rem;
             margin: 0;
+            overflow: hidden;
         }
         .hero-content-wrapper {
             background: rgba(26, 26, 26, 0.88);
             padding: 2rem 1.75rem;
             border-radius: 4px;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .hero-content-wrapper * {
+            box-sizing: border-box;
+        }
+        .hero-content-wrapper h1,
+        .hero-content-wrapper p {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+        .hero-content-wrapper .hero-buttons {
+            max-width: 100%;
+        }
+        .hero-content-wrapper .hero-buttons .btn {
+            max-width: 100%;
         }
         .hero-content-wrapper .hero-badge,
         .hero-content-wrapper h1,
@@ -351,7 +373,7 @@
         .hero p {
             font-size: 1rem;
             color: var(--gray-light);
-            max-width: 550px;
+            max-width: 100%;
             margin: 0 auto 1.5rem;
             font-weight: 300;
             line-height: 1.7;
@@ -2051,24 +2073,6 @@
     </footer>
 
     <script>
-        // Hero text block: counteract browser zoom so it stays fixed size
-        (function() {
-            function updateHeroZoom() {
-                var scale = (window.visualViewport && window.visualViewport.scale) || 1;
-                var hero = document.querySelector('.hero-content-wrapper');
-                if (hero) {
-                    hero.style.transform = 'scale(' + (1 / scale) + ')';
-                    hero.style.transformOrigin = 'left bottom';
-                }
-            }
-            if (window.visualViewport) {
-                window.visualViewport.addEventListener('resize', updateHeroZoom);
-                window.visualViewport.addEventListener('scroll', updateHeroZoom);
-            }
-            window.addEventListener('resize', updateHeroZoom);
-            updateHeroZoom();
-        })();
-
         // Mobile nav: full-screen overlay, all navigation in JS for reliable taps
         const navToggle = document.getElementById('navToggle');
         const navDrawer = document.getElementById('navDrawer');
