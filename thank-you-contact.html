@@ -15,23 +15,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        (function(){var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark';})();
-    </script>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --gold: #C9A84C;
-            --black: #0A0A0A;
-            --dark: #141414;
-            --gray: #888888;
-            --gray-light: #AAAAAA;
-            --white: #F5F0E8;
+            --black: #FAF8F5;
+            --dark: #EDE9E3;
+            --gray: #3d3d3d;
+            --gray-light: #2d2d2d;
+            --white: #1A1A1A;
             --font-heading: 'Playfair Display', Georgia, serif;
             --font-body: 'Raleway', 'Segoe UI', sans-serif;
-        }
-        html[data-theme="light"] {
-            --black: #FAF8F5; --dark: #EDE9E3; --gray: #555555; --gray-light: #444444; --white: #1A1A1A;
         }
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-body); background-color: var(--black); color: var(--white); line-height: 1.7; overflow-x: hidden; }
@@ -40,29 +34,22 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 1.25rem 3rem;
+            padding: 0.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(250, 248, 245, 0.98);
             transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
         }
-        nav.scrolled { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 3rem; box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5); }
-        html[data-theme="light"] nav.scrolled { background: rgba(250, 248, 245, 0.95); box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08); }
-        .nav-logo { font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold); text-decoration: none; letter-spacing: 1px; }
+        nav.scrolled { background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(10px); padding: 0.4rem 3rem; box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08); }
+        .nav-logo { font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold); text-decoration: none; letter-spacing: 1px; display: flex; align-items: center; }
+        .nav-logo img { width: 250px; height: 150px; object-fit: contain; }
         .nav-logo span { color: var(--white); font-weight: 300; }
         .nav-links { display: flex; list-style: none; gap: 2.5rem; }
         .nav-links a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--gold); }
         .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
         .nav-toggle span { display: block; width: 28px; height: 2px; background: var(--gold); }
-        .theme-toggle { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; background: none; border: none; cursor: pointer; color: var(--white); transition: color 0.3s ease; }
-        .theme-toggle:hover { color: var(--gold); }
-        .theme-toggle svg { width: 22px; height: 22px; }
-        .theme-toggle .icon-sun { display: none; }
-        .theme-toggle .icon-moon { display: block; }
-        html[data-theme="light"] .theme-toggle .icon-sun { display: block; }
-        html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
-
         .page-hero {
             position: relative;
             padding: 10rem 2rem 4rem;
@@ -105,7 +92,8 @@
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-logo { font-family: var(--font-heading); font-size: 1.2rem; color: var(--gold); text-decoration: none; }
+        .footer-logo { font-family: var(--font-heading); font-size: 1.2rem; color: var(--gold); text-decoration: none; display: flex; align-items: center; }
+        .footer-logo img { width: 400px; height: 86px; object-fit: contain; }
         .footer-logo span { color: var(--white); font-weight: 300; }
         .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.8rem; margin-right: 1.5rem; }
         .footer-links a:hover { color: var(--gold); }
@@ -116,9 +104,8 @@
         .footer-text { font-size: 0.8rem; color: var(--gray); font-weight: 300; }
 
         @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; position: fixed; inset: 0; background: rgba(10, 10, 10, 0.98); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
-            html[data-theme="light"] .nav-links { background: rgba(250, 248, 245, 0.98); }
+            nav { padding: 0.5rem 1.5rem; }
+            .nav-links { display: none; position: fixed; inset: 0; background: rgba(250, 248, 245, 0.98); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
             .nav-links.active { display: flex; }
             .nav-toggle { display: flex; z-index: 1001; }
             .page-hero { padding: 8rem 1.5rem 3rem; }
@@ -134,19 +121,15 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <nav id="navbar">
-        <a href="index.html" class="nav-logo">Artistic <span>Entrances</span></a>
+        <a href="index.html" class="nav-logo"><img src="images/logo-horizontal.svg" alt="Artistic Entrances"></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#services">Services</a></li>
             <li><a href="index.html#gallery">Gallery</a></li>
-            <li><a href="wrought-iron-promo.html">Promotion</a></li>
+            <li><a href="https://artisticentrances.shop/" target="_blank" rel="noopener noreferrer">Shop In-Stock Doors</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z"/></svg>
-            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"/></svg>
-        </button>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </nav>
 
@@ -163,7 +146,7 @@
 
     <footer>
         <div class="footer-content">
-            <a href="index.html" class="footer-logo">Artistic <span>Entrances</span></a>
+            <a href="index.html" class="footer-logo"><img src="images/logo-horizontal.svg" alt="Artistic Entrances"></a>
             <div class="footer-social">
                 <a href="https://www.facebook.com/artistic.entrances.lv" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                 <a href="https://www.instagram.com/artisticentranceslv" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -180,13 +163,6 @@
     <script>
         window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
         document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
-        var themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) themeToggle.addEventListener('click', function() {
-            var html = document.documentElement;
-            var next = html.dataset.theme === 'light' ? 'dark' : 'light';
-            html.dataset.theme = next;
-            localStorage.setItem('theme', next);
-        });
     </script>
 
 </body>
