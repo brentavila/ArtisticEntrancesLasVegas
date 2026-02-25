@@ -38,6 +38,31 @@
         .page-content h2:first-of-type{margin-top:0;}
         .page-content h2 em{color:var(--gold);font-style:italic;}
         .page-content p{color:var(--gray-light);margin-bottom:1.25rem;font-weight:300;}
+        .section-head{text-align:center;margin-bottom:2.5rem;}
+        .section-head h2{font-family:var(--font-heading);font-size:clamp(1.75rem,3vw,2.25rem);color:var(--white);margin:0 0 0.5rem;}
+        .section-head .underline{width:60px;height:3px;background:var(--gold);margin:0 auto 1rem;}
+        .section-head .subtitle{color:var(--gray);font-size:1.05rem;max-width:560px;margin:0 auto;}
+        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1000px;margin:0 auto 4rem;}
+        .feature-card{background:#fff;border-radius:8px;padding:1.75rem;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.06);}
+        .feature-card .icon{margin-bottom:1rem;color:#1a1a1a;}
+        .feature-card .icon svg{width:40px;height:40px;fill:currentColor;stroke:currentColor;}
+        .feature-card h3{font-family:var(--font-heading);font-size:1.15rem;color:#1a1a1a;margin-bottom:0.5rem;}
+        .feature-card p{font-size:0.9rem;color:#444;line-height:1.6;margin:0;}
+        .products-wrap{max-width:1100px;margin:0 auto;padding:2rem;}
+        .products-intro{text-align:center;color:var(--gray-light);margin-bottom:1.5rem;font-size:0.95rem;}
+        .products-intro strong{color:var(--white);}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+        .product-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.08);transition:box-shadow .3s;}
+        .product-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.1);}
+        .product-card .product-img{background:var(--dark);position:relative;display:flex;align-items:center;justify-content:center;min-height:240px;}
+        .product-card .product-img img{width:100%;height:auto;max-height:320px;object-fit:contain;object-position:center;}
+        .product-card .product-body{padding:1.25rem;}
+        .product-card .product-title{font-family:var(--font-heading);font-size:1.1rem;color:#1a1a1a;margin-bottom:0.5rem;line-height:1.3;}
+        .product-card .product-ctas{display:flex;flex-wrap:wrap;gap:0.5rem;}
+        .product-card .product-ctas .btn{padding:0.65rem 1rem;font-size:0.75rem;}
+        .product-card .product-ctas .btn-outline{padding:0.65rem 1rem;font-size:0.75rem;}
+        .product-card .product-link{display:inline-block;margin-top:0.5rem;font-size:0.8rem;color:var(--gold);text-decoration:none;}
+        .product-card .product-link:hover{text-decoration:underline;}
         .process-steps{counter-reset:step;margin:2rem 0;}
         .process-step{position:relative;padding-left:3.5rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.06);}
         .process-step:last-child{border-bottom:none;}
@@ -62,6 +87,9 @@
             .nav-toggle{display:flex;z-index:1001;}
             .page-hero{padding:6rem 1.5rem 3rem;}
             .page-content{padding:3rem 1.5rem 4rem;}
+            .features-grid{grid-template-columns:1fr;gap:1rem;margin-bottom:3rem;}
+            .products-wrap{padding:2rem 1rem;}
+            .products-grid{grid-template-columns:1fr;}
             .process-step{padding-left:2.75rem;}
             .process-step::before{width:1.75rem;height:1.75rem;font-size:0.95rem;}
             .footer-content{flex-direction:column;text-align:center;}
@@ -87,7 +115,124 @@
         <h1>Custom Wrought Iron Doors</h1>
         <p>From first contact to final delivery &mdash; a seamless, transparent process</p>
     </header>
-    <main class="page-content">
+    <section class="sec-products" style="padding:2rem 2rem 3rem;">
+        <div class="section-head">
+            <h2>Explore Our Iron Door Collection</h2>
+            <div class="underline"></div>
+            <p class="subtitle">Strength, security, and timeless elegance. Inquire for pricing and availability — we do not accept online orders.</p>
+        </div>
+        <div class="products-wrap">
+            <p class="products-intro"><strong>No online checkout.</strong> Contact us to confirm pricing, sizes, and delivery. Call or request a quote and we'll guide you through the process.</p>
+            <div class="products-grid">
+                <article class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0053/1202/0573/products/rs_w-600_h-600_de1d103f-92b1-491b-9a13-549414dbed86.jpeg?v=1555538517" alt="Iron Double Door Victory" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Iron Double Door Victory</h3>
+                        <div class="product-ctas">
+                            <a href="tel:+17253021391" class="btn">Call for Quote</a>
+                            <a href="/contact" class="btn btn-outline">Request a Quote</a>
+                        </div>
+                        <a href="https://artisticentrances.shop/products/iron-double-door-victory?variant=44555019681978" target="_blank" rel="noopener noreferrer" class="product-link">View full details &rarr;</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0053/1202/0573/products/rs_w-600_h-600_e2c471d3-9e15-46f1-a048-19e0e21f9dec.jpeg?v=1555539307" alt="Iron ID07 Single Door" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Iron ID07 Single Door</h3>
+                        <div class="product-ctas">
+                            <a href="tel:+17253021391" class="btn">Call for Quote</a>
+                            <a href="/contact" class="btn btn-outline">Request a Quote</a>
+                        </div>
+                        <a href="https://artisticentrances.shop/products/iron-id07-single-door?variant=44555039015098" target="_blank" rel="noopener noreferrer" class="product-link">View full details &rarr;</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0053/1202/0573/products/rs_w-600_h-600_a68f4527-ed75-42bd-b909-c9694cb035fa.jpeg?v=1555538892" alt="Iron Doors Francisco Style" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Iron Doors Francisco Style</h3>
+                        <div class="product-ctas">
+                            <a href="tel:+17253021391" class="btn">Call for Quote</a>
+                            <a href="/contact" class="btn btn-outline">Request a Quote</a>
+                        </div>
+                        <a href="https://artisticentrances.shop/products/iron-doors-francisco-style?variant=44555041145018" target="_blank" rel="noopener noreferrer" class="product-link">View full details &rarr;</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0053/1202/0573/products/rs_w-600_h-600_04737bfe-738e-4266-bf04-eb885675c68e.jpeg?v=1555539004" alt="Iron Double Door 36x96" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Iron Double Door 36x96</h3>
+                        <div class="product-ctas">
+                            <a href="tel:+17253021391" class="btn">Call for Quote</a>
+                            <a href="/contact" class="btn btn-outline">Request a Quote</a>
+                        </div>
+                        <a href="https://artisticentrances.shop/products/iron-double-door-36x96-1?variant=44555038589114" target="_blank" rel="noopener noreferrer" class="product-link">View full details &rarr;</a>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img">
+                        <img src="https://cdn.shopify.com/s/files/1/0053/1202/0573/products/rs_w-600_h-600_92763717-cadf-45a7-ba5d-794ffbdf3dc1.jpeg?v=1555539086" alt="Iron Double Door 36x96" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Iron Double Door 36x96</h3>
+                        <div class="product-ctas">
+                            <a href="tel:+17253021391" class="btn">Call for Quote</a>
+                            <a href="/contact" class="btn btn-outline">Request a Quote</a>
+                        </div>
+                        <a href="https://artisticentrances.shop/products/iron-double-door-36x96?variant=44555038294202" target="_blank" rel="noopener noreferrer" class="product-link">View full details &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="sec-features" style="padding:3rem 2rem 2rem;">
+        <div class="section-head">
+            <h2>Our Services</h2>
+            <div class="underline"></div>
+            <p class="subtitle">From concept to installation, we deliver a seamless experience rooted in excellence.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10" stroke-dasharray="3 2"/></svg></div>
+                <h3>Custom Design</h3>
+                <p>Collaborate with our designers to create a door that reflects your vision. Every detail, from scrollwork to finish, is tailored to your specifications.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg></div>
+                <h3>Handcrafted Build</h3>
+                <p>Our craftsmen bring your design to life using heavy-duty 14-gauge steel, precision welding, and premium finishes built to last.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 8.5L21 9L16 13.5L17.5 20L12 17L6.5 20L8 13.5L3 9L9.5 8.5L12 2Z"/></svg></div>
+                <h3>Expert Installation</h3>
+                <p>Our skilled installers ensure a perfect fit and flawless finish, from removal of your existing door to final hardware alignment.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7-7-7"/><path d="M5 19l7-7-5 5"/></svg></div>
+                <h3>Strength &amp; Security</h3>
+                <p>Iron doors offer exceptional durability and peace of mind. Polyurethane-filled cores and tempered, sealed glass add energy efficiency and weather resistance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/><path d="M12 3a9 9 0 019 9"/><path d="M12 21a9 9 0 01-9-9"/></svg></div>
+                <h3>Custom Finishes &amp; Styles</h3>
+                <p>From sleek modern to ornate traditional, choose from a variety of finishes and intricate designs to match your home.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/><path d="M8 6v12M16 6v12"/></svg></div>
+                <h3>Consultation</h3>
+                <p>Not sure where to start? Our complimentary design consultation helps you explore styles, sizes, and possibilities for your perfect entrance.</p>
+            </div>
+        </div>
+    </section>
+    <main>
+        <div class="page-content">
         <h2>Why <em>Custom</em> Wrought Iron?</h2>
         <p>Custom wrought iron doors add security, curb appeal, and lasting value to your home. Unlike off-the-shelf options, every piece we create is designed for your opening, your style, and your vision. We handle design, fabrication, finish, and installation so you get one point of contact and one exceptional result.</p>
 
@@ -114,13 +259,16 @@
                 <p>We deliver and install your door with care. We handle removal of the old door (if needed), fit, hardware, and cleanup. You get a walkthrough and our contact info for any follow-up.</p>
             </div>
         </div>
+        </div>
 
+        <div class="page-content">
         <div class="cta-box">
             <h3>Ready to Start?</h3>
             <p>Get a free consultation and quote. We'll guide you through every step.</p>
             <a href="tel:+17253021391" class="btn">Call (725) 302-1391</a>
             <span style="display:inline-block;margin:0 0.5rem;color:var(--gray);">or</span>
             <a href="/contact" class="btn btn-outline">Request a Consultation</a>
+        </div>
         </div>
     </main>
     <footer>
